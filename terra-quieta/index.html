@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Terra Quieta — авторские туры по Европе для пар и небольших компаний с личным куратором. Учебный проект: вымышленное агентство.">
+<meta property="og:title" content="Terra Quieta — авторская Европа в вашем темпе">
+<meta property="og:description" content="Лендинг вымышленного агентства авторских туров по Европе. Проект Ильи Сухова для портфолио.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wintheos.github.io/terra-quieta/">
+<meta property="og:image" content="https://wintheos.github.io/terra-quieta/img/hero.jpg">
+<meta name="theme-color" content="#2f2621">
+<title>Terra Quieta — авторские туры по Европе</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: editorial, asymmetric 12-col grid; full-bleed photography with type laid over quiet sky; staggered tour columns; sharp corners everywhere. Single light look by choice. */
+:root{
+  color-scheme:light;
+  --surface-0:#ffffff; --surface-50:#faf7f2; --surface-100:#f3ede4; --surface-200:#e8dfd2;
+  --ink:#2a2420; --ink-muted:#6b5f53; --line:#d9cebf; --line-strong:#958675;
+  --terracotta:#9c5236; --terracotta-700:#81432c; --terracotta-100:#e9d6c6; --on-accent:#fffaf4;
+  --olive:#5e5f40; --espresso:#2f2621; --on-dark:#f3ede4; --on-dark-muted:#c4b6a6;
+  --success:#4f6b45; --error:#a23b2f;
+  --font:"Jost","Futura","Century Gothic","Avenir Next",Arial,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+  --section:clamp(80px,11vw,168px);
+  --max:1360px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--surface-50);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.over{font-size:12px;line-height:16px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-muted)}
+.h2{font-size:clamp(34px,4.4vw,60px);line-height:1.08;letter-spacing:-.01em}
+.lead{font-size:clamp(18px,1.6vw,21px);line-height:1.5;font-weight:300;color:var(--ink-muted);max-width:34ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 32px;border:1px solid transparent;border-radius:0;font:500 13px/16px var(--font);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out}
+.btn--primary{background:var(--terracotta);color:var(--on-accent)}
+.btn--primary:hover{background:var(--terracotta-700)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn--ghost:hover{border-color:var(--ink)}
+.btn--light{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn--light:hover{background:#fff;color:var(--ink)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--terracotta);outline-offset:3px}
+.btn[disabled]{background:var(--surface-200);color:var(--ink-muted);cursor:not-allowed}
+.arrow{width:28px;height:1px;background:currentColor;position:relative}
+.arrow::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
+.link{font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--terracotta);padding-bottom:6px;border-bottom:1px solid currentColor;display:inline-flex;gap:12px;align-items:center}
+
+/* Header */
+.hdr{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;color:#fff}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:28px}
+.logo{font-weight:500;font-size:14px;letter-spacing:.42em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.nav a{text-decoration:none;opacity:.88}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.hdr .btn{height:44px;padding:0 22px}
+
+/* Hero */
+.hero{position:relative;min-height:clamp(640px,96vh,980px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--espresso)}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;transform:scale(1.04);animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(47,38,33,.28)}
+.hero__in{position:relative;z-index:2;width:100%;padding-block:0 40px}
+.hero__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:end}
+.hero__title{grid-column:1/9;font-size:clamp(52px,9.2vw,148px);line-height:.94;letter-spacing:-.025em;font-weight:300}
+.hero__title em{font-style:normal;display:block;padding-left:1.1em}
+.hero__side{grid-column:9/13;display:grid;gap:28px;padding-bottom:14px}
+.hero__side p{font-size:19px;line-height:1.5;font-weight:300;max-width:30ch}
+.hero__bar{margin-top:56px;padding-top:20px;border-top:1px solid rgba(255,255,255,.4);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.hero__bar span{opacity:.92}
+.coord{font-variant-numeric:tabular-nums}
+
+/* Service */
+.svc{padding-block:var(--section)}
+.svc__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.svc__photo{grid-column:1/7;position:relative}
+.svc__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.svc__photo figcaption{position:absolute;left:-1px;bottom:-1px;background:var(--surface-50);padding:16px 24px 0 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--ink-muted)}
+.svc__text{grid-column:8/13;padding-top:clamp(0px,6vw,96px);display:grid;gap:32px;min-width:0}
+.pillars{margin-top:24px;border-top:1px solid var(--line)}
+.pillar{display:grid;grid-template-columns:40px minmax(0,1fr);gap:20px;padding-block:28px;border-bottom:1px solid var(--line)}
+.pillar svg{width:28px;height:28px;stroke:var(--olive);fill:none;stroke-width:1;stroke-linecap:square}
+.pillar h3{font-size:22px;line-height:1.3;font-weight:400;margin-bottom:8px}
+.pillar p{color:var(--ink-muted)}
+
+/* Tours */
+.tours{padding-block:var(--section);background:var(--surface-100)}
+.tours__head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:end;margin-bottom:clamp(48px,7vw,104px)}
+.tours__title{grid-column:1/8;display:grid;gap:24px;min-width:0}
+.tours__head .lead{grid-column:9/13}
+.tours__cols{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,96px);align-items:start}
+.tours__col{display:grid;gap:clamp(56px,7vw,112px);min-width:0}
+.tours__col--b{padding-top:clamp(0px,16vw,240px)}
+.tour{display:grid;gap:20px;text-decoration:none;color:inherit}
+.tour__media{position:relative;overflow:hidden;background:var(--surface-200)}
+.tour__media img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.tour--wide .tour__media img{aspect-ratio:5/4}
+.tour:hover .tour__media img{transform:scale(1.03)}
+.tour__badge{position:absolute;top:20px;left:20px;background:var(--surface-0);color:var(--ink);font:500 11px/16px var(--font);letter-spacing:.22em;text-transform:uppercase;padding:8px 12px}
+.tour__num{position:absolute;right:20px;bottom:12px;color:#fff;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;opacity:.92;font-variant-numeric:tabular-nums}
+.tour__row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.tour h3{font-size:clamp(24px,2.2vw,32px);line-height:1.2;font-weight:400}
+.tour__meta{color:var(--ink-muted);font-size:15px}
+.tour__price{font-size:20px;font-weight:400;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tour__price small{display:block;font-size:12px;letter-spacing:.06em;color:var(--ink-muted);text-align:right}
+.tour__foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* Steps */
+.steps{padding-block:var(--section)}
+.steps__head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:64px}
+.steps__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.step{padding:28px 32px 0 0;display:grid;gap:14px;align-content:start;min-width:0}
+.step + .step{padding-left:24px;border-left:1px solid var(--line)}
+.step__n{font-size:64px;line-height:1;font-weight:300;color:var(--olive);font-variant-numeric:tabular-nums}
+.step h3{font-size:22px;font-weight:400;line-height:1.3}
+.step p{color:var(--ink-muted)}
+
+/* Quiz */
+.quiz{background:var(--espresso);color:var(--on-dark);padding-block:var(--section);scroll-margin-top:0}
+.quiz__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.quiz__intro{grid-column:1/6;display:grid;gap:28px;position:sticky;top:48px;min-width:0}
+.quiz__intro .over{color:var(--on-dark-muted)}
+.quiz__intro .lead{color:var(--on-dark-muted)}
+.quiz__intro ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:12px;color:var(--on-dark-muted);font-size:15px}
+.quiz__intro li{display:flex;gap:14px;align-items:baseline}
+.quiz__intro li::before{content:"";width:16px;height:1px;background:var(--on-dark-muted);flex:none;transform:translateY(-4px)}
+.qcard{grid-column:7/13;background:var(--surface-50);color:var(--ink);padding:clamp(28px,4vw,56px);min-width:0}
+.qprog{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:20px}
+.qprog i{height:2px;background:var(--surface-200)}
+.qprog i.on{background:var(--terracotta)}
+.qstep-label{font:500 12px/16px var(--font);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-muted)}
+.qpane h3{font-size:clamp(26px,2.6vw,34px);line-height:1.2;font-weight:300;margin:12px 0 28px}
+.qpane fieldset{border:0;margin:0;padding:0;min-width:0}
+.qpane legend{font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:12px;padding:0}
+.qpane fieldset + fieldset{margin-top:28px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opts--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.opts--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;gap:12px;min-height:58px;padding:14px 16px;border:1px solid var(--line-strong);background:var(--surface-0);font-size:16px;line-height:1.3;transition:border-color .2s,background .2s}
+.opt span::before{content:"";width:10px;height:10px;border:1px solid var(--line-strong);flex:none}
+.opt input:checked + span{border-color:var(--terracotta);background:var(--terracotta-100)}
+.opt input:checked + span::before{background:var(--terracotta);border-color:var(--terracotta)}
+.opt input:focus-visible + span{outline:2px solid var(--terracotta);outline-offset:2px}
+.opt:hover span{border-color:var(--ink)}
+.field{display:grid;gap:8px}
+.field + .field{margin-top:18px}
+.field label{font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted)}
+.field input,.field select{height:54px;padding:0 16px;border:1px solid var(--line-strong);border-radius:0;background:var(--surface-0);font:400 16px var(--font);color:var(--ink);width:100%;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.field input:focus,.field select:focus{outline:none;border-color:var(--terracotta);box-shadow:0 0 0 1px var(--terracotta)}
+.consent{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;color:var(--ink-muted)}
+.consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--terracotta);flex:none}
+.err{color:var(--error);font-size:14px;margin-top:12px;min-height:21px}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:36px}
+.qback{background:none;border:0;padding:0 0 6px;border-bottom:1px solid currentColor;font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);cursor:pointer}
+.qback[hidden]{display:none}
+.qdone{display:grid;gap:20px;padding-block:24px}
+.qdone .mark{width:56px;height:56px;border:1px solid var(--success);display:grid;place-items:center}
+.qdone .mark svg{width:24px;height:24px;stroke:var(--success);fill:none;stroke-width:1.5}
+.qdone h3{font-size:clamp(28px,3vw,38px);font-weight:300;line-height:1.15;margin:0}
+.qdone p{color:var(--ink-muted)}
+.qsum{margin-top:8px;border-top:1px solid var(--line)}
+.qsum div{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:15px}
+.qsum dt{color:var(--ink-muted)}
+.qsum dd{margin:0;text-align:right}
+.qalt{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-muted)}
+.qalt button{background:none;border:0;padding:0;font:inherit;color:var(--terracotta);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Reviews */
+.rev{padding-block:var(--section)}
+.rev__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.rev__main{grid-column:1/9;display:grid;gap:40px;min-width:0}
+.rev__main blockquote{margin:0;font-size:clamp(28px,3.4vw,46px);line-height:1.22;font-weight:300;letter-spacing:-.005em;text-indent:-.4em}
+.who{display:grid;gap:4px}
+.who b{font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.who span{color:var(--ink-muted);font-size:15px}
+.rev__side{grid-column:10/13;display:grid;gap:48px;align-content:start;padding-top:8px;min-width:0}
+.rev__side blockquote{margin:0 0 20px;font-size:18px;line-height:1.55;font-weight:300}
+.rev__side figure{margin:0;padding-top:24px;border-top:1px solid var(--line)}
+
+/* FAQ */
+.faq{padding-block:var(--section);background:var(--surface-100)}
+.faq__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.faq__head{grid-column:1/5;display:grid;gap:24px;align-content:start}
+.faq__list{grid-column:6/13;border-top:1px solid var(--ink);min-width:0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding-block:26px;font-size:clamp(18px,1.7vw,22px);line-height:1.35;font-weight:400}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:14px;height:14px;flex:none;background:linear-gradient(var(--ink),var(--ink)) center/14px 1px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1px 14px no-repeat;transition:transform .32s ease-out}
+.faq details{overflow:hidden}
+.faq details.is-open summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:var(--terracotta)}
+.faq details p{padding:0 48px 28px 0;color:var(--ink-muted);max-width:62ch}
+
+/* Final CTA */
+.final{position:relative;color:#fff;min-height:clamp(520px,70vh,760px);display:flex;align-items:center;overflow:hidden;background:var(--espresso)}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.final::after{content:"";position:absolute;inset:0;background:rgba(47,38,33,.22)}
+.final .wrap{position:relative;z-index:2;width:100%;display:grid;gap:36px;justify-items:start}
+.final h2{font-size:clamp(44px,7vw,112px);line-height:1;letter-spacing:-.02em;font-weight:300;max-width:12ch}
+.final .row{display:flex;gap:16px;flex-wrap:wrap}
+
+/* Footer */
+.ftr{background:var(--espresso);color:var(--on-dark);padding-block:72px 40px}
+.ftr__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.ftr .logo{grid-column:1/5;font-size:13px}
+.ftr__col{grid-column:span 2;display:grid;gap:10px;align-content:start;font-size:15px;color:var(--on-dark-muted);min-width:0}
+.ftr__col b{color:var(--on-dark);font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:6px}
+.ftr__col a{text-decoration:none}
+.ftr__col a:hover{color:var(--on-dark)}
+.ftr__legal{grid-column:1/-1;margin-top:56px;padding-top:24px;border-top:1px solid rgba(243,237,228,.18);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--on-dark-muted)}
+.sel{user-select:all}
+
+/* Messenger */
+.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;justify-items:end;gap:10px}
+.fab__btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 24px 0 20px;background:var(--espresso);color:var(--on-dark);border:1px solid rgba(243,237,228,.22);font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 24px rgba(42,36,32,.22)}
+.fab__btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.3;stroke-linecap:square}
+.fab__panel{background:var(--surface-0);color:var(--ink);width:min(300px,calc(100vw - 48px));padding:24px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(42,36,32,.16);display:grid;gap:16px}
+.fab__panel p{font-size:14px;color:var(--ink-muted);line-height:1.5}
+.fab__panel .h{display:flex;justify-content:space-between;align-items:center;font:500 12px/16px var(--font);letter-spacing:.2em;text-transform:uppercase}
+.fab__panel .h button{background:none;border:0;font-size:22px;line-height:1;color:var(--ink-muted);cursor:pointer;padding:4px}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:12px;border-top:1px solid var(--line)}
+.contact small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted)}
+.contact span.v{font-size:16px}
+.copy{background:none;border:1px solid var(--line-strong);height:32px;padding:0 12px;font:500 11px var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);cursor:pointer}
+
+/* Responsive */
+@media (max-width:1080px){
+  .nav{display:none}
+  .hero__title{grid-column:1/-1}
+  .hero__side{grid-column:1/-1;grid-template-columns:minmax(0,1fr) auto;align-items:end}
+  .svc__photo{grid-column:1/-1}
+  .svc__photo img{aspect-ratio:16/11}
+  .svc__text{grid-column:1/-1;padding-top:24px}
+  .tours__title,.tours__head .lead{grid-column:1/-1}
+  .steps__list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step:nth-child(3){padding-left:0;border-left:0}
+  .step:nth-child(n+3){padding-top:40px}
+  .quiz__intro,.qcard{grid-column:1/-1;position:static}
+  .rev__main,.rev__side{grid-column:1/-1}
+  .rev__side{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faq__head,.faq__list{grid-column:1/-1}
+  .ftr .logo{grid-column:1/-1;margin-bottom:24px}
+  .ftr__col{grid-column:span 4}
+}
+@media (max-width:720px){
+  .hdr .btn{display:none}
+  .hero{min-height:0;padding-top:112px}
+  .hero__in{padding-block:0 28px}
+  .hero__img{object-position:42% 70%}
+  .hero__title em{padding-left:.6em}
+  .hero__side{grid-template-columns:1fr}
+  .hero__bar{flex-direction:column;gap:8px;margin-top:36px}
+  .tours__cols{grid-template-columns:1fr}
+  .tours__col--b{padding-top:0}
+  .tour--wide .tour__media img{aspect-ratio:4/5}
+  .steps__list{grid-template-columns:1fr}
+  .step,.step + .step{padding:28px 0 0;border-left:0}
+  .step + .step{border-top:1px solid var(--line);margin-top:28px}
+  .opts,.opts--4,.opts--3{grid-template-columns:1fr}
+  .rev__side{grid-template-columns:1fr}
+  .ftr__col{grid-column:1/-1}
+  .fab{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  .fab__btn .t{display:none}
+  .fab__btn{width:56px;padding:0;justify-content:center}
+  .faq details p{padding-right:0}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top">Terra Quieta</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#service">Сервис</a><a href="#tours">Туры</a><a href="#reviews">Отзывы</a><a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn--light" href="#quiz">Подобрать тур</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Terra Quieta">
+    <img class="hero__img" src="img/hero.jpg" alt="Холмы Валь-д’Орча в утреннем тумане, кипарисовая дорога к каменной ферме">
+    <div class="hero__in">
+      <div class="wrap">
+        <div class="hero__grid">
+          <h1 class="hero__title">Европа,<em>собранная</em>под вас</h1>
+          <div class="hero__side">
+            <p>Авторские маршруты для двоих и небольших компаний. Вы выбираете, куда поехать, остальным занимается куратор.</p>
+            <div><a class="btn btn--primary" href="#quiz">Подобрать тур <span class="arrow" aria-hidden="true"></span></a></div>
+          </div>
+        </div>
+        <div class="hero__bar">
+          <span class="coord">43°04′ N · 11°40′ E · Валь-д’Орча, Тоскана</span>
+          <span>6 авторских маршрутов</span>
+          <span>Куратор на связи 24/7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc" id="service">
+    <div class="wrap svc__grid">
+      <figure class="svc__photo" style="margin:0">
+        <img src="img/como.jpg" alt="Терраса старой виллы с лимонными деревьями над озером Комо">
+        <figcaption>Озеро Комо, 7:40 утра</figcaption>
+      </figure>
+      <div class="svc__text">
+        <span class="over">Сервис и сопровождение</span>
+        <h2 class="h2">Мы рядом от первого вопроса до возвращения домой</h2>
+        <p class="lead">Каждый маршрут ведёт личный куратор. Он знает регион, бронирует то, чего нет в каталогах, и решает вопросы на месте, пока вы отдыхаете.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 22 L10 8 L15 16 L19 11 L25 22 Z"/><path d="M3 25 H25"/></svg>
+            <div><h3>Маршрут под вас</h3><p>Темп, отели и рестораны подбираем под пару или компанию, а не под группу из сорока человек.</p></div>
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="7" y="3" width="14" height="22"/><path d="M12 21 H16"/></svg>
+            <div><h3>Куратор на связи</h3><p>Один человек ведёт поездку от подбора до возвращения и отвечает в мессенджере в любое время.</p></div>
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3 V25 M3 14 H25"/><rect x="8" y="8" width="12" height="12"/></svg>
+            <div><h3>Решения на месте</h3><p>Задержали рейс или закрылся музей: новый трансфер и замену программы организуем сами.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tours" id="tours">
+    <div class="wrap">
+      <div class="tours__head">
+        <div class="tours__title">
+          <span class="over">Авторские туры · 2027</span>
+          <h2 class="h2">Шесть маршрутов, которые мы знаем до последней тропы</h2>
+        </div>
+        <p class="lead">Любой можно изменить по датам, длительности и составу. Цена указана за человека при поездке вдвоём, без перелёта.</p>
+      </div>
+      <div class="tours__cols">
+        <div class="tours__col">
+          <a class="tour tour--wide" href="#quiz">
+            <div class="tour__media"><img src="img/amalfi.jpg" alt="Террасы и пастельные дома Амальфитанского побережья над морем"><span class="tour__badge">8 ночей</span><span class="tour__num">01</span></div>
+            <div class="tour__row"><h3>Амальфи без спешки</h3><div class="tour__price">от 390 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Позитано · Равелло · Капри</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+          <a class="tour" href="#quiz">
+            <div class="tour__media"><img src="img/dolomites.jpg" alt="Розовые на рассвете пики Доломитовых Альп отражаются в горном озере"><span class="tour__badge">7 ночей</span><span class="tour__num">03</span></div>
+            <div class="tour__row"><h3>Доломиты: горы и шале</h3><div class="tour__price">от 340 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Больцано · Альпе-ди-Сиузи · Кортина</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+          <a class="tour tour--wide" href="#quiz">
+            <div class="tour__media"><img src="img/provence.jpg" alt="Ряды лаванды ведут к каменной ферме на плато Валансоль"><span class="tour__badge">7 ночей</span><span class="tour__num">05</span></div>
+            <div class="tour__row"><h3>Прованс в сезон лаванды</h3><div class="tour__price">от 310 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Валансоль · Горд · Экс-ан-Прованс</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+        </div>
+        <div class="tours__col tours__col--b">
+          <a class="tour" href="#quiz">
+            <div class="tour__media"><img src="img/algarve.jpg" alt="Золотые скалы и пустая бухта Алгарве на закате"><span class="tour__badge">9 ночей</span><span class="tour__num">02</span></div>
+            <div class="tour__row"><h3>Португалия у океана</h3><div class="tour__price">от 280 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Лиссабон · Синтра · Алгарве</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+          <a class="tour" href="#quiz">
+            <div class="tour__media"><img src="img/cyclades.jpg" alt="Белая деревня и голубой купол часовни над Эгейским морем в сумерках"><span class="tour__badge">10 ночей</span><span class="tour__num">04</span></div>
+            <div class="tour__row"><h3>Киклады: три острова</h3><div class="tour__price">от 420 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Милос · Сифнос · Наксос</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+          <a class="tour" href="#quiz">
+            <div class="tour__media"><img src="img/hero.jpg" alt="Кипарисовая дорога среди холмов Тосканы" style="object-position:62% 60%"><span class="tour__badge">8 ночей</span><span class="tour__num">06</span></div>
+            <div class="tour__row"><h3>Тоскана в своём темпе</h3><div class="tour__price">от 320 000 ₽<small>за человека</small></div></div>
+            <div class="tour__foot"><span class="tour__meta">Флоренция · Кьянти · Валь-д’Орча</span><span class="link">Маршрут <span class="arrow" aria-hidden="true"></span></span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <div class="wrap">
+      <div class="steps__head">
+        <div style="display:grid;gap:24px"><span class="over">Как это работает</span><h2 class="h2">Четыре шага до поездки</h2></div>
+        <a class="link" href="#quiz">Начать с квиза <span class="arrow" aria-hidden="true"></span></a>
+      </div>
+      <ol class="steps__list">
+        <li class="step"><span class="step__n">01</span><h3>Квиз за минуту</h3><p>Пять вопросов о том, с кем, когда и как вы хотите отдыхать.</p></li>
+        <li class="step"><span class="step__n">02</span><h3>Два-три маршрута</h3><p>Куратор присылает варианты с отелями, программой и итоговой ценой.</p></li>
+        <li class="step"><span class="step__n">03</span><h3>Поездка с куратором</h3><p>Документы в одном приложении, куратор на связи весь отпуск.</p></li>
+        <li class="step"><span class="step__n">04</span><h3>Возвращение</h3><p>Встречаем трансфером в аэропорту и спрашиваем, что улучшить.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="quiz" id="quiz">
+    <div class="wrap quiz__grid">
+      <div class="quiz__intro">
+        <span class="over">Подбор тура</span>
+        <h2 class="h2">Расскажите, каким вы видите отпуск</h2>
+        <p class="lead">Ответьте на пять вопросов. Куратор подготовит два-три маршрута и свяжется с вами в течение рабочего дня.</p>
+        <ul><li>Около минуты</li><li>Ни к чему не обязывает</li><li>Ответ от живого куратора, не от бота</li></ul>
+      </div>
+
+      <form class="qcard" id="qform" novalidate>
+        <div class="qprog" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+        <div class="qstep-label" id="qlabel" aria-live="polite">Шаг 1 из 5</div>
+
+        <div class="qpane" data-step="1">
+          <h3>С кем вы едете?</h3>
+          <div class="opts opts--3" role="radiogroup" aria-label="С кем вы едете">
+            <label class="opt"><input type="radio" name="who" id="who-2" value="Вдвоём"><span>Вдвоём</span></label>
+            <label class="opt"><input type="radio" name="who" id="who-f" value="С друзьями"><span>С друзьями</span></label>
+            <label class="opt"><input type="radio" name="who" id="who-g" value="Компанией до 6 человек"><span>Компанией до&nbsp;6</span></label>
+          </div>
+        </div>
+
+        <div class="qpane" data-step="2" hidden>
+          <h3>Какой отдых вам ближе?</h3>
+          <div class="opts" role="radiogroup" aria-label="Какой отдых ближе">
+            <label class="opt"><input type="radio" name="mood" id="mood-sea" value="Спокойно у моря"><span>Спокойно у моря</span></label>
+            <label class="opt"><input type="radio" name="mood" id="mood-city" value="Города и культура"><span>Города и культура</span></label>
+            <label class="opt"><input type="radio" name="mood" id="mood-wine" value="Гастрономия и вино"><span>Гастрономия и вино</span></label>
+            <label class="opt"><input type="radio" name="mood" id="mood-mnt" value="Горы и природа"><span>Горы и природа</span></label>
+          </div>
+        </div>
+
+        <div class="qpane" data-step="3" hidden>
+          <h3>Когда и на сколько?</h3>
+          <fieldset><legend>Сезон</legend>
+            <div class="opts opts--4">
+              <label class="opt"><input type="radio" name="season" id="s-spr" value="Весна"><span>Весна</span></label>
+              <label class="opt"><input type="radio" name="season" id="s-sum" value="Лето"><span>Лето</span></label>
+              <label class="opt"><input type="radio" name="season" id="s-aut" value="Осень"><span>Осень</span></label>
+              <label class="opt"><input type="radio" name="season" id="s-win" value="Зима"><span>Зима</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Длительность</legend>
+            <div class="opts opts--3">
+              <label class="opt"><input type="radio" name="len" id="l-5" value="5–7 ночей"><span>5–7 ночей</span></label>
+              <label class="opt"><input type="radio" name="len" id="l-8" value="8–10 ночей"><span>8–10 ночей</span></label>
+              <label class="opt"><input type="radio" name="len" id="l-11" value="11 ночей и больше"><span>11 и больше</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="qpane" data-step="4" hidden>
+          <h3>Какой бюджет на человека?</h3>
+          <div class="opts" role="radiogroup" aria-label="Бюджет на человека">
+            <label class="opt"><input type="radio" name="budget" id="b-1" value="До 250 тыс. ₽"><span>До 250 тыс. ₽</span></label>
+            <label class="opt"><input type="radio" name="budget" id="b-2" value="250–400 тыс. ₽"><span>250–400 тыс. ₽</span></label>
+            <label class="opt"><input type="radio" name="budget" id="b-3" value="От 400 тыс. ₽"><span>От 400 тыс. ₽</span></label>
+            <label class="opt"><input type="radio" name="budget" id="b-4" value="Пока не знаю"><span>Пока не знаю</span></label>
+          </div>
+        </div>
+
+        <div class="qpane" data-step="5" hidden>
+          <h3>Как с вами связаться?</h3>
+          <div class="field"><label for="q-name">Имя</label><input id="q-name" name="name" autocomplete="given-name" placeholder="Анна"></div>
+          <div class="field"><label for="q-contact">Телефон или Telegram</label><input id="q-contact" name="contact" autocomplete="tel" placeholder="+7 900 000-00-00 или @username"></div>
+          <div class="field"><label for="q-way">Удобный способ связи</label>
+            <select id="q-way" name="way"><option>Telegram</option><option>WhatsApp</option><option>Звонок</option></select></div>
+          <label class="consent" for="q-ok"><input type="checkbox" id="q-ok" name="ok"><span>Согласен на обработку персональных данных для подбора тура</span></label>
+        </div>
+
+        <div class="qdone" id="qdone" hidden>
+          <div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6"/></svg></div>
+          <h3 id="qdone-title">Спасибо. Заявка у куратора</h3>
+          <p>Куратор подготовит два-три маршрута и свяжется с вами в течение рабочего дня. Это демонстрационная форма: данные никуда не отправляются.</p>
+          <dl class="qsum" id="qsum"></dl>
+        </div>
+
+        <p class="err" id="qerr" role="alert"></p>
+        <div class="qnav" id="qnav">
+          <button type="button" class="qback" id="qback" hidden>Назад</button>
+          <button type="submit" class="btn btn--primary" id="qnext" disabled>Далее <span class="arrow" aria-hidden="true"></span></button>
+        </div>
+        <p class="qalt">Не хотите отвечать на вопросы? <button type="button" data-open-fab>Напишите куратору</button></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="rev" id="reviews">
+    <div class="wrap">
+      <span class="over" style="display:block;margin-bottom:48px">Отзывы путешественников</span>
+      <div class="rev__grid">
+        <figure class="rev__main" style="margin:0">
+          <blockquote>«В Порту у нас отменили поезд. Куратор за двадцать минут нашёл машину с водителем, и мы даже не опоздали на ужин в винодельне.»</blockquote>
+          <figcaption class="who"><b>Анна и Михаил</b><span>Вдвоём · Португалия у океана, май</span></figcaption>
+        </figure>
+        <div class="rev__side">
+          <figure>
+            <blockquote>«Маршрут собрали под наш темп: без ранних подъёмов и с одним свободным днём в каждом городе.»</blockquote>
+            <figcaption class="who"><b>Ольга и Денис</b><span>Вдвоём · Тоскана, сентябрь</span></figcaption>
+          </figure>
+          <figure>
+            <blockquote>«Ехали вчетвером, у всех разные интересы. Каждый день был вариант и для любителей гор, и для тех, кто хотел к морю.»</blockquote>
+            <figcaption class="who"><b>Кирилл</b><span>С друзьями · Доломиты, июль</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap faq__grid">
+      <div class="faq__head">
+        <span class="over">Вопросы</span>
+        <h2 class="h2">Перед бронированием</h2>
+        <p class="lead">Не нашли ответ? Куратор ответит в мессенджере.</p>
+      </div>
+      <div class="faq__list">
+        <details open><summary>Что входит в стоимость тура?</summary><p>Отели, трансферы, внутренние переезды, экскурсии из программы и работа куратора. Перелёт подбираем отдельно под ваши даты и город вылета.</p></details>
+        <details><summary>Как проходит оплата?</summary><p>Предоплата 30% фиксирует отели и программу. Остаток вносится за 30 дней до поездки. Все платежи по договору.</p></details>
+        <details><summary>Помогаете ли вы с визами?</summary><p>Да. Составляем список документов, заполняем анкеты и записываем в визовый центр. Подтверждения брони отелей готовим сами.</p></details>
+        <details><summary>Можно ли изменить маршрут после бронирования?</summary><p>Можно. До поездки меняем даты и состав программы по условиям отелей, а в поездке куратор перестраивает дни по погоде и настроению.</p></details>
+        <details><summary>Нужна ли страховка?</summary><p>Да, для поездок в Европу она обязательна. Оформляем полис с медицинским покрытием и, по желанию, страховкой от отмены поездки.</p></details>
+        <details><summary>Как связаться с куратором в поездке?</summary><p>В Telegram или WhatsApp в любое время суток. В экстренных случаях куратор отвечает в течение 15 минут.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-label="Подобрать тур">
+    <img src="img/sea.jpg" alt="Спокойное Средиземное море после заката">
+    <div class="wrap">
+      <span class="over" style="color:rgba(255,255,255,.85)">Следующая поездка</span>
+      <h2>Тихая Европа ждёт вас</h2>
+      <div class="row">
+        <a class="btn btn--primary" href="#quiz">Подобрать тур <span class="arrow" aria-hidden="true"></span></a>
+        <button type="button" class="btn btn--light" data-open-fab>Написать куратору</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <a class="logo" href="#top">Terra Quieta</a>
+    <div class="ftr__col"><b>Туры</b><a href="#tours">Италия</a><a href="#tours">Португалия</a><a href="#tours">Греция</a><a href="#tours">Франция</a></div>
+    <div class="ftr__col"><b>Агентство</b><a href="#service">Сервис</a><a href="#reviews">Отзывы</a><a href="#faq">Вопросы</a></div>
+    <div class="ftr__col"><b>Связь</b><span class="sel">+7 495 000-00-00</span><span class="sel">@terraquieta</span><span>Москва, Пречистенка 10</span></div>
+    <div class="ftr__col"><b>Часы</b><span>Офис пн–пт 10–19</span><span>Куратор в поездке 24/7</span></div>
+    <div class="ftr__legal"><span>© 2026 Terra Quieta. Вымышленное агентство, проект для портфолио</span><span>Политика конфиденциальности</span></div>
+  </div>
+</footer>
+
+<div class="fab" id="fab">
+  <div class="fab__panel" id="fabPanel" hidden>
+    <div class="h"><span>Куратор на связи</span><button type="button" id="fabClose" aria-label="Закрыть">×</button></div>
+    <p>Напишите в удобный мессенджер, ответим в течение 15 минут в рабочее время.</p>
+    <div class="contact"><div><small>Telegram</small><span class="v sel">@terraquieta</span></div><button type="button" class="copy" data-copy="@terraquieta">Копировать</button></div>
+    <div class="contact"><div><small>WhatsApp</small><span class="v sel">+7 495 000-00-00</span></div><button type="button" class="copy" data-copy="+7 495 000-00-00">Копировать</button></div>
+  </div>
+  <button type="button" class="fab__btn" id="fabBtn" aria-expanded="false" aria-controls="fabPanel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4 H21 V17 H11 L6 21 V17 H3 Z"/></svg><span class="t">Написать куратору</span>
+  </button>
+</div>
+
+<script>
+(function(){
+  const form=document.getElementById('qform');
+  const panes=[...form.querySelectorAll('.qpane')];
+  const prog=[...form.querySelectorAll('.qprog i')];
+  const label=document.getElementById('qlabel');
+  const next=document.getElementById('qnext');
+  const back=document.getElementById('qback');
+  const err=document.getElementById('qerr');
+  let step=1;
+  const req={1:['who'],2:['mood'],3:['season','len'],4:['budget']};
+  const val=n=>{const el=form.querySelector('input[name="'+n+'"]:checked');return el?el.value:''};
+  function ok(){
+    if(step<5) return req[step].every(n=>val(n));
+    return form.elements.name.value.trim() && form.elements.contact.value.trim() && form.elements.ok.checked;
+  }
+  function render(){
+    panes.forEach(p=>p.hidden=+p.dataset.step!==step);
+    prog.forEach((i,k)=>i.classList.toggle('on',k<step));
+    label.textContent='Шаг '+step+' из 5';
+    back.hidden=step===1;
+    next.firstChild.nodeValue=step===5?'Отправить ':'Далее ';
+    next.disabled=!ok(); err.textContent='';
+  }
+  form.addEventListener('input',()=>{next.disabled=!ok();err.textContent=''});
+  form.addEventListener('change',()=>{next.disabled=!ok()});
+  back.addEventListener('click',()=>{if(step>1){step--;render()}});
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!ok()){err.textContent=step===5?'Укажите имя, контакт и отметьте согласие на обработку данных.':'Выберите вариант, чтобы продолжить.';return}
+    if(step<5){step++;render();const f=panes[step-1].querySelector('input');f&&f.focus({preventScroll:true});return}
+    const rows=[['С кем',val('who')],['Отдых',val('mood')],['Когда',val('season')+', '+val('len')],['Бюджет',val('budget')],['Связь',form.elements.way.value+' · '+form.elements.contact.value.trim()]];
+    const dl=document.getElementById('qsum');dl.innerHTML='';
+    rows.forEach(([k,v])=>{const d=document.createElement('div');const t=document.createElement('dt');t.textContent=k;const dd=document.createElement('dd');dd.textContent=v;d.append(t,dd);dl.append(d)});
+    document.getElementById('qdone-title').textContent='Спасибо, '+form.elements.name.value.trim()+'. Заявка у куратора';
+    panes.forEach(p=>p.hidden=true);
+    document.getElementById('qnav').hidden=true;label.textContent='Готово';prog.forEach(i=>i.classList.add('on'));
+    document.getElementById('qdone').hidden=false;
+  });
+  render();
+
+  const calm=matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.faq details').forEach(d=>{
+    const s=d.querySelector('summary'),a=d.querySelector('p');
+    d.classList.toggle('is-open',d.open);
+    s.addEventListener('click',e=>{
+      if(calm.matches){d.classList.toggle('is-open',!d.open);return}
+      e.preventDefault();
+      if(d._anim){d._anim.cancel()}
+      const border=d.offsetHeight-d.clientHeight;
+      const from=d.offsetHeight;
+      const opening=!d.classList.contains('is-open');
+      d.classList.toggle('is-open',opening);
+      let to;
+      if(opening){d.open=true;to=d.scrollHeight+border;a.animate([{opacity:0,transform:'translateY(-8px)'},{opacity:1,transform:'none'}],{duration:420,delay:80,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'})}
+      else{to=s.offsetHeight+border;a.animate([{opacity:1},{opacity:0}],{duration:200,easing:'ease-out',fill:'forwards'})}
+      d._anim=d.animate([{height:from+'px'},{height:to+'px'}],{duration:opening?420:340,easing:'cubic-bezier(.2,.7,.2,1)'});
+      d._anim.onfinish=()=>{d._anim=null;if(!opening){d.open=false;a.getAnimations().forEach(x=>x.cancel())}};
+      d._anim.oncancel=()=>{d._anim=null};
+    });
+  });
+
+  const panel=document.getElementById('fabPanel'),btn=document.getElementById('fabBtn');
+  const setOpen=o=>{panel.hidden=!o;btn.setAttribute('aria-expanded',String(o))};
+  btn.addEventListener('click',()=>setOpen(panel.hidden));
+  document.getElementById('fabClose').addEventListener('click',()=>setOpen(false));
+  document.querySelectorAll('[data-open-fab]').forEach(b=>b.addEventListener('click',()=>setOpen(true)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.dataset.copy;
+    const done=()=>{b.textContent='Скопировано';setTimeout(()=>b.textContent='Копировать',1600)};
+    const fallback=()=>{const s=b.previousElementSibling.querySelector('.v');const r=document.createRange();r.selectNodeContents(s);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='Выделено'};
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  }));
+})();
+</script>
+</body>
+</html>
